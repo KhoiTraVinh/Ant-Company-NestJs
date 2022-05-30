@@ -42,7 +42,12 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
         },
       },
     }),
-    CacheModule.register(),
+    CacheModule.register({
+      redis: {
+        host: 'localhost',
+        port: 6380,
+      },
+    }),
     UserModule,
     LopModule,
     AuthModule,

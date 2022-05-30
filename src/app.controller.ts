@@ -16,17 +16,16 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Public()
-  @CacheTTL(20)
   @Get()
-  async findAll(): Promise<any> {
-    const data = await this.appService.getCache();
+  async findAll(@Body('text') text: string): Promise<any> {
+    const data = await this.appService.getCache(text);
     return data;
   }
   @Public()
   @Post()
-  setCache(@Body('text') text: string): any {
+  setCache(@Body('text') text: string, @Body('text1') text1: string): any {
     console.log(11111);
 
-    this.appService.setCache(text);
+    this.appService.setCache(text, text1);
   }
 }
