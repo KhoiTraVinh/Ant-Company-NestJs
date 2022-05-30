@@ -3,16 +3,16 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { JwtAuthGuand } from './guard/jwt-auth.guard';
 import { LocalAuthGuand } from './guard/local-auth.guard';
-import { Public } from './public.key';
+import { Public } from './guard/public.key';
 import { Role } from './roles/role.enum';
 import { Roles } from './roles/roles.decorator';
 
-
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   @UseGuards(LocalAuthGuand)
+  @Public()
   @Post('/login')
   async login(@Request() req) {
     return this.authService.login(req.user);
@@ -20,7 +20,7 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuand)
   @Get('profile')
-  getProfile(@Request() req) {    
+  getProfile(@Request() req) {
     return req.user;
   }
 

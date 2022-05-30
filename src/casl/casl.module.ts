@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import { CaslAbilityFactory } from './casl-ability.factory';
-import { Service } from './.service';
+import { Service } from './casl.service';
+import { CaslController } from './casl.controller';
 
 @Module({
-    providers: [CaslAbilityFactory, Service],
-    exports: [CaslAbilityFactory]
+  providers: [CaslAbilityFactory, Service],
+  exports: [CaslAbilityFactory],
+  controllers: [CaslController],
 })
 export class CaslModule {}

@@ -11,10 +11,15 @@ import { LocalStategy } from './strategy/local.strategy';
 import { AuthController } from './auth.controller';
 
 @Module({
-  imports: [UsersModule, PassportModule.register({ session: true }), JwtModule.register({
-    secret: jwtConstants.secret,
-    signOptions: {expiresIn: '1d'},
-  }), UserModule],
+  imports: [
+    UsersModule,
+    PassportModule.register({ session: true }),
+    JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '1d' },
+    }),
+    UserModule,
+  ],
   providers: [AuthService, LocalStategy, JwtStrategy],
   exports: [AuthService],
   controllers: [AuthController],

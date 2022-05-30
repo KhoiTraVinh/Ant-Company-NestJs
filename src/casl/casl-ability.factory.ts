@@ -1,6 +1,14 @@
-import { Injectable } from "@nestjs/common";
-import { Action } from "src/casl/action.enum";
-import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType, InferSubjects } from '@casl/ability'
+import { Injectable } from '@nestjs/common';
+import { Action } from 'src/casl/model/action.enum';
+import {
+  Ability,
+  AbilityBuilder,
+  AbilityClass,
+  ExtractSubjectType,
+  InferSubjects,
+} from '@casl/ability';
+import { Users } from './model/users.model';
+import { Article } from './model/article.model';
 
 type Subjects = InferSubjects<typeof Article | typeof Users> | 'all';
 

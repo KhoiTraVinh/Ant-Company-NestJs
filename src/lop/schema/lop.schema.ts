@@ -5,8 +5,8 @@ export type LopDocument = Lop & Document;
 
 @Schema()
 export class Lop {
-  @Prop({required: true})
-  name: String;
+  @Prop({ required: true })
+  name: string;
 }
 
 export const LopSchema = SchemaFactory.createForClass(Lop);
