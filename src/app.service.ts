@@ -4,23 +4,20 @@ import { CaslAbilityFactory } from './casl/casl-ability.factory';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-    private caslAbilityFactory: CaslAbilityFactory,
-  ) {}
+  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
-  async getCache(): Promise<any> {
+  async getCache(text: string): Promise<any> {
     console.log(3333333);
 
-    const value = await this.cacheManager.get('key');
+    const value = await this.cacheManager.get(text);
     console.log(value);
 
     return value;
   }
 
-  async setCache(text: string): Promise<any> {
+  async setCache(text: string, text1: string): Promise<any> {
     console.log(text);
 
-    await this.cacheManager.set('key', text);
+    await this.cacheManager.set(text, text1);
   }
 }
